@@ -68,8 +68,6 @@ class Sequence:
     def create_video(self, out, fps, frame_dir):
         out = os.path.join(os.getcwd(), out)
         command = "ffmpeg -i {}/frame_%d.png -r {} {}".format(frame_dir, str(int(fps)), out)
-
-        print("DEBUG: command: ", command)
         os.system(command)
 
     def event_file_to_video(self, input_path, output_path, fps=25):
