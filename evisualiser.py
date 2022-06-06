@@ -42,7 +42,7 @@ class Sequence:
 
         start_time_logs = time.time()  # for logs (eta)
 
-        while current_event < self.n_events and frame_number:
+        while current_event < self.n_events:
             print('Generating frame ', frame_number, '. Progress: ', '{:.2f}'.format((current_event+1)*100/self.n_events), ' %', end='\r')
             end_time = start_time + frame_width
 
@@ -83,14 +83,3 @@ class Sequence:
             return "-"
         eta = (time.time() - self.start_time_logs)*(self.n_events - current_event) / current_event
         return time.strftime('%H:%M:%S', time.gmtime(eta))
-
-
-if __name__ == "__main__":
-
-    # for input fileaname generation
-    user = "01"
-    lighting = "natural"
-    this_input_path = "/Users/ahnaf/Desktop/msc_project/datasets/Amir_DVS128_gesture_dataset/DVS_Gesture_dataset/DvsGesture/user" + user + "_" + lighting + ".aedat"
-
-    seq = Sequence()
-    seq.event_file_to_video(input_path=this_input_path, output_path="./output1.mp4", fps=25)
